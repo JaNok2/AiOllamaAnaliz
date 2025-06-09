@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Analiza logów</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <style>
+    body { padding: 2rem; }
+    textarea { width: 100%; }
+    .log-box {
+      background: #f4f4f4;
+      padding: 1rem;
+      margin-top: 1rem;
+      white-space: pre-wrap;
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Analiza logów</h1>
+
+      <!-- Przycisk do filtrowania -->
+      <div class="mb-4">
+        <a class="button is-info" href="/filter-download">🔍 Filtruj logi</a>
+      </div>
+
+      <form class="box" action="/analyze" method="post" enctype="multipart/form-data">
+
+        <!-- Wybór pliku logów -->
+        <div class="field">
+          <label class="label" for="plik">Plik logów</label>
+          <div class="control">
+            <input class="input" id="plik" type="file" name="plik" required>
+          </div>
+        </div>
+
+        <!-- Data dnia do analizy -->
+        <div class="field">
+          <label class="label" for="date">Data analizowanego dnia (YYYY-MM-DD)</label>
+          <div class="control">
+            <input class="input" id="date" type="date" name="date" required>
+          </div>
+        </div>
+
+        <!-- Prompt systemowy z domyślną wartością -->
+        <div class="field">
+          <label class="label" for="prompt">Prompt systemowy</label>
+          <div class="control">
+            <textarea id="prompt" name="prompt" rows="10" class="textarea" placeholder="Tutaj możesz zmienić prompt">{{ default_prompt | e }}</textarea>
+          </div>
+        </div>
+
+        <!-- Wybór modelu -->
+        <div class="field">
+          <label class="label" for="modelSelect">Model</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="modelSelect" name="model">
+                {% for m in models %}
+                <option value="{{ m }}">{{ m }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Przycisk analizy -->
+        <div class="field">
+          <div class="control">
+            <button class="button is-link" type="submit">🔎 Analizuj</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

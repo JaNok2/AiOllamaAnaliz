@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Wynik filtrowania</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Wynik filtrowania</h1>
+    <p>Przed filtrowaniem: <strong>{{ before_count }}</strong></p>
+    <p>Po filtrowaniu: <strong>{{ after_count }}</strong></p>
+
+    {% if can_download %}
+      <a href="/filtered/download-json" class="button is-success mt-4">📥 Pobierz JSON</a>
+    {% else %}
+      <p class="has-text-danger">Błąd przy zapisie pliku.</p>
+    {% endif %}
+
+    <a href="/filter-download" class="button is-light mt-2">⬅ Wróć</a>
+  </div>
+</section>
+</body>
+</html>

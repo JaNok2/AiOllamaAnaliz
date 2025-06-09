@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+
+.vscode/
+.idea/
+
+ollama_data/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride

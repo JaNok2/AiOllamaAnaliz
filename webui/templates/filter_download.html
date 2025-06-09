@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Filtruj logi</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+</head>
+<body>
+<section class="section">
+  <div class="container">
+    <h1 class="title">Filtruj logi (JSON)</h1>
+    <form action="/filter-download" method="post" enctype="multipart/form-data" class="box">
+      <div class="field">
+        <label class="label">Plik JSON</label>
+        <div class="control">
+          <input type="file" name="logfile" required class="input">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Minimalny poziom rule.level</label>
+        <div class="control">
+          <input type="number" name="min_level" value="6" class="input">
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">agent.name zawiera</label>
+        <div class="control">
+          <input type="text" name="agent_name_contains" class="input">
+        </div>
+      </div>
+      <div class="field">
+        <div class="control">
+          <button type="submit" class="button is-link">Filtruj</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+</body>
+</html>
